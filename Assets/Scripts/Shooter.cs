@@ -8,6 +8,7 @@ public class Shooter : MonoBehaviour
     [SerializeField] GameObject projectile, gun;
     AttackerSpawner myLaneSpawner;
     Animator animator;
+    [SerializeField] float coolDownProjectileTimer = 0f;
 
     private void Start()
     {
@@ -17,7 +18,7 @@ public class Shooter : MonoBehaviour
 
     private void Update()
     {
-        if(IsAttackerInLane())
+        if(IsAttackerInLane() && animator.GetBool("coolDownComplete"))
         {
             animator.SetBool("isAttacking", true);
         }
@@ -25,6 +26,18 @@ public class Shooter : MonoBehaviour
         {
             animator.SetBool("isAttacking", false);
        }
+    }
+
+    public void setAnimatorBoolDelay()
+    {
+        animator.SetBool("coolDownComplete", false);
+        Invoke("boolFlip", coolDownProjectileTimer);
+    }
+
+    private void boolFlip()
+    {
+        animator.SetBool("coolDownComplete", true);
+        
     }
 
     private void SetLaneSpawner()
