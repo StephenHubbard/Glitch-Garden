@@ -27,7 +27,7 @@ public class Health : MonoBehaviour
 
         float horizontalInput = Input.GetAxis("Horizontal");
 
-        GameObject deathVFXObject = Instantiate(deathVFX, transform.position + (transform.right * -0.6f) + (transform.up * -0.3f), transform.rotation);
+        GameObject deathVFXObject = Instantiate(deathVFX, transform.position + (transform.right * -0.6f) + (transform.up * 0f), transform.rotation);
         Destroy(deathVFXObject, 2f);
 
     }
