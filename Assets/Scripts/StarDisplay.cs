@@ -32,7 +32,6 @@ public class StarDisplay : MonoBehaviour
         UpdateDisplay();
     }
 
-    
 
     public void SpendStars(int amount)
     {

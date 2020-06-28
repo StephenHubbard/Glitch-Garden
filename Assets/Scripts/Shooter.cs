@@ -37,7 +37,6 @@ public class Shooter : MonoBehaviour
     private void boolFlip()
     {
         animator.SetBool("coolDownComplete", true);
-        
     }
 
     private void SetLaneSpawner()
