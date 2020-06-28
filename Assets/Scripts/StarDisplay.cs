@@ -9,6 +9,7 @@ public class StarDisplay : MonoBehaviour
     [SerializeField] int stars = 100;
     Text starText;
 
+
     void Start()
     {
         starText = GetComponent<Text>();
@@ -30,6 +31,8 @@ public class StarDisplay : MonoBehaviour
         stars += amount;
         UpdateDisplay();
     }
+
+    
 
     public void SpendStars(int amount)
     {
