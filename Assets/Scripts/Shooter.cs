@@ -6,14 +6,29 @@ public class Shooter : MonoBehaviour
 {
 
     [SerializeField] GameObject projectile, gun;
+    [SerializeField] float coolDownProjectileTimer = 0f;
+    [SerializeField] GameObject cannonVFX;
+
+
     AttackerSpawner myLaneSpawner;
     Animator animator;
-    [SerializeField] float coolDownProjectileTimer = 0f;
+    GameObject projectileParent;
+    const string PROJECTILE_PARENT_NAME = "Projectiles";
 
     private void Start()
     {
         SetLaneSpawner();
         animator = GetComponent<Animator>();
+        CreateProjectileParent();
+    }
+
+    private void CreateProjectileParent() 
+    {
+        projectileParent = GameObject.Find(PROJECTILE_PARENT_NAME);
+        if (!projectileParent)
+        {
+            projectileParent = new GameObject(PROJECTILE_PARENT_NAME);
+        }
     }
 
     private void Update()
@@ -25,7 +40,7 @@ public class Shooter : MonoBehaviour
         else
         {
             animator.SetBool("isAttacking", false);
-       }
+        }
     }
 
     public void setAnimatorBoolDelay()
@@ -67,6 +82,19 @@ public class Shooter : MonoBehaviour
 
     public void Fire()
     {
-        Instantiate(projectile, gun.transform.position, Quaternion.identity);
+        GameObject newProjectile = Instantiate(projectile, gun.transform.position, Quaternion.identity) as GameObject;
+        newProjectile.transform.parent = projectileParent.transform;
+    }
+
+    public void CannonSFX()
+    {
+        GetComponent<AudioSource>().Play();
+
+    }
+
+    public void CannonVFX() 
+    {
+        GameObject cannonVFXObject = Instantiate(cannonVFX, transform.position + (transform.right * 0.4f) + (transform.up * 0.2f), transform.rotation);
+            Destroy(cannonVFXObject, 2f);
     }
 }

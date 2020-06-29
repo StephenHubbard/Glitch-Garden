@@ -26,18 +26,8 @@ public class Health : MonoBehaviour
         }
 
         float horizontalInput = Input.GetAxis("Horizontal");
-
-        if (GetComponent<Defender>())
-        {
-            GameObject deathVFXObject = Instantiate(deathVFX, transform.position + (transform.right * -0.0f) + (transform.up * 0f), transform.rotation);
-            Destroy(deathVFXObject, 2f);
-
-        }
-        else
-        {
-            GameObject deathVFXObject = Instantiate(deathVFX, transform.position + (transform.right * -0.6f) + (transform.up * 0f), transform.rotation);
-            Destroy(deathVFXObject, 2f);
-        }
+        GameObject deathVFXObject = Instantiate(deathVFX, transform.position + (transform.right * -0.0f) + (transform.up * 0f) + (transform.forward * -1f), transform.rotation);
+        Destroy(deathVFXObject, 2f);
 
     }
 }

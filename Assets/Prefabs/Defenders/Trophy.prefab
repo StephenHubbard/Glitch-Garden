@@ -67,7 +67,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd9d3dd4e1445c54b95cf7a0f2d12be9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  starCost: 100
+  starCost: 50
   starVFX: {fileID: 100008, guid: e3d819d8722fa1f47a3f68574b56dfb3, type: 3}
 --- !u!61 &6974076805627722130
 BoxCollider2D:

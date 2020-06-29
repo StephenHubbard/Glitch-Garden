@@ -34,6 +34,7 @@ public class LevelController : MonoBehaviour
     IEnumerator HandleWinCondition()
     {
         winLabel.SetActive(true);
+        Time.timeScale = 0;
         GetComponent<AudioSource>().Play();
         yield return new WaitForSeconds(waitToLoad);
         FindObjectOfType<LevelLoader>().LoadNextScene();
